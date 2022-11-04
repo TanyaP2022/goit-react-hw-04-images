@@ -1,30 +1,29 @@
-import React, { Component } from 'react';
 import { SearchbarStyled } from './SearchbarStyled';
 import { ImSearch } from 'react-icons/im'
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 
-export default class Searchbar extends Component {
-  state = {
-    imageName: '',
+
+export default function Searchbar({onSubmit}) {
+  const [imageName, setImageName] = useState('');
+
+
+  const onHendleNameChange = (e) => {
+    setImageName(e.currentTarget.value.toLowerCase());
   };
-  onHendleNameChange = (e) => {
-    this.setState({ imageName: e.currentTarget.value.toLowerCase() });
-  };
-  onHendleSubmit = (e) => {
+
+  const onHendleSubmit = (e) => {
     e.preventDefault();
 
-    if (this.state.imageName.trim() === '') {
+    if (imageName.trim() === '') {
       toast('Введіть запит');
       return 
     }
-    this.props.onSubmit(this.state.imageName);
-    this.setState({ imageName: '' });
+    onSubmit(imageName);
+    setImageName('');
   };
 
-  render() {
-    const { onHendleSubmit, onHendleNameChange } = this;
-    const { imageName } = this.state;
   return (
     <SearchbarStyled className="searchbar" >
       <form
@@ -53,4 +52,3 @@ export default class Searchbar extends Component {
     </SearchbarStyled>
   )
   };
-}

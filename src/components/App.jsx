@@ -1,22 +1,18 @@
-import { Component } from 'react';
+// import { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
+import { useState } from 'react';
 
-class App extends Component {
-  state = {
-    imageName: '',
-  }
-  hendleSubmit = imageName => {
-    this.setState({ imageName });
-  };
-  render() {
-    const { hendleSubmit } = this;
-    const { imageName } = this.state;
+
+export default function App() {
+  
+  const [imageName, setImageName] = useState('');
+
     return (
       <div className="App">
-        <Searchbar onSubmit={hendleSubmit} />
+        <Searchbar onSubmit={setImageName} />
         <ImageGallery imageName={imageName} />
         <ToastContainer
           position="top-center"
@@ -24,7 +20,4 @@ class App extends Component {
         />
       </div>
   );
-  }
 };
-
-export default App;
