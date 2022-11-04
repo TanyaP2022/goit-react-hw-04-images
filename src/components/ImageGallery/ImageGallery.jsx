@@ -70,7 +70,6 @@ export default function ImageGallery({imageName}) {
       setLoading(false)
     }
     };
-
   
   const openModal = (largeImageURL, tags) => {
     setShowModal(true);
