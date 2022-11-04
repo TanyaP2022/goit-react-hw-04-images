@@ -16,7 +16,7 @@ const Status = {
   REJECTED: 'rejected',
 };
 
-export default function ImageGallery({imageName}) {
+export default function ImageGallery() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -24,6 +24,7 @@ export default function ImageGallery({imageName}) {
   const [showModal, setShowModal] = useState(false);
   const [largeImageURL, setLargeImageURL] = useState('');
   const [tags, setTags] = useState('');
+  const [imageName, setImageName] =useState('')
 
   useEffect(() => {
     if (!imageName) {
