@@ -16,7 +16,7 @@ const Status = {
   REJECTED: 'rejected',
 };
 
-export default function ImageGallery() {
+export default function ImageGallery({imageName}) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -24,21 +24,24 @@ export default function ImageGallery() {
   const [showModal, setShowModal] = useState(false);
   const [largeImageURL, setLargeImageURL] = useState('');
   const [tags, setTags] = useState('');
-  const [imageName, setImageName] =useState('')
+  // const [imageName, setImageName] =useState('')
 
   useEffect(() => {
     if (!imageName) {
     setStatus(Status.IDLE);
     }
+    //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     loadImages(imageName, 1);
     setPage(1);
+    //eslint-disable-next-line
   }, [imageName]);
 
   useEffect(() => {
     loadImages(imageName, page);
+    //eslint-disable-next-line
   }, [imageName, page]);
 
   
